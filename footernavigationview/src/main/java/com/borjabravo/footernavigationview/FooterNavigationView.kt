@@ -19,12 +19,12 @@ package com.borjabravo.footernavigationview
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
-import android.support.annotation.IdRes
-import android.support.design.widget.NavigationView
-import android.support.v4.widget.NestedScrollView
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewStub
+import androidx.annotation.IdRes
+import androidx.core.widget.NestedScrollView
+import com.google.android.material.navigation.NavigationView
 
 class FooterNavigationView : NestedScrollView {
 
@@ -36,14 +36,17 @@ class FooterNavigationView : NestedScrollView {
     var itemIconTint: ColorStateList? = null
         set(value) {
             navigationView?.itemIconTintList = value
+            field = value
         }
     var itemTextColor: ColorStateList? = null
         set(value) {
             navigationView?.itemTextColor = value
+            field = value
         }
     var itemBackground: Drawable? = null
         set(value) {
             navigationView?.itemBackground = value
+            field = value
         }
 
     constructor(context: Context) : super(context) {
