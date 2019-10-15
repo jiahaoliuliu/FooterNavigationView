@@ -1,13 +1,13 @@
 package com.borjabravo.footernavigationviewsample
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.NavigationView
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.widget.Toolbar
-import android.view.Gravity
 import android.view.MenuItem
+import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.borjabravo.footernavigationview.FooterNavigationView
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout = findViewById(R.id.drawerLayout) as DrawerLayout
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         toolbar.setNavigationIcon(R.drawable.ic_menu)
-        toolbar.setNavigationOnClickListener { drawerLayout?.openDrawer(Gravity.START) }
+        toolbar.setNavigationOnClickListener { drawerLayout?.openDrawer(GravityCompat.START) }
         footerNavigationView = findViewById(R.id.footer_navigation_view) as FooterNavigationView
         footerNavigationView?.setCheckedItem(optionSelected)
         footerNavigationView?.navigationView?.menu?.performIdentifierAction(optionSelected, 0)
