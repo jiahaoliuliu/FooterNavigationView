@@ -31,6 +31,7 @@ class FooterNavigationView : NestedScrollView {
     var navigationView: NavigationView? = null
         private set
     var menu: Int = 0
+    var footerView: View? = null
     var headerLayout: Int = 0
     var footerLayout: Int = 0
     var itemIconTint: ColorStateList? = null
@@ -71,12 +72,12 @@ class FooterNavigationView : NestedScrollView {
         this.itemTextColor = typedArray.getColorStateList(R.styleable.FooterNavigationView_itemTextColor)
         this.itemBackground = typedArray.getDrawable(R.styleable.FooterNavigationView_itemBackground)
         this.footerLayout = typedArray.getResourceId(R.styleable.FooterNavigationView_footerLayout, 0)
-        val viewStub = findViewById(R.id.footer) as ViewStub
+        var footerViewStub = findViewById<ViewStub>(R.id.footer)
 
         navigationView?.inflateHeaderView(headerLayout)
         navigationView?.inflateMenu(menu)
-        viewStub.layoutResource = footerLayout
-        viewStub.inflate()
+        footerViewStub.layoutResource = footerLayout
+        footerView = footerViewStub.inflate()
         typedArray.recycle()
     }
 

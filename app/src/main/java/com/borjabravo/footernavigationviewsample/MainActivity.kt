@@ -3,6 +3,7 @@ package com.borjabravo.footernavigationviewsample
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
@@ -16,6 +17,8 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var activityMainBinding: ActivityMainBinding? = null
+    private var footerTitle: TextView? = null
+    private var footerSubtitle: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Set up toolbar
         activityMainBinding?.toolbar?.setNavigationIcon(R.drawable.ic_menu)
         activityMainBinding?.toolbar?.setNavigationOnClickListener { activityMainBinding?.drawerLayout?.openDrawer(GravityCompat.START) }
+
+        // Set up the footer
+        footerTitle = activityMainBinding?.footerNavigationView?.footerView?.findViewById(R.id.footer_title)
+        footerSubtitle = activityMainBinding?.footerNavigationView?.footerView?.findViewById(R.id.footer_subtitle)
+        footerTitle?.text = getText(R.string.name)
+        footerSubtitle?.text = getText(R.string.copyright)
 
         // Set up footer navigation view
         activityMainBinding?.footerNavigationView?.setNavigationListener(this)
