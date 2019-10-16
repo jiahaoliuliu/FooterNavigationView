@@ -12,4 +12,5 @@
     <string name="menu_zoom">Zoom</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_help">Help</string>
+    <string name="select_an_item">Please select an item from the drawer</string>
 </resources>

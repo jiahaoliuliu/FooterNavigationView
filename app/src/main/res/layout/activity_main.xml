@@ -11,6 +11,7 @@
         tools:openDrawer="start">
 
         <LinearLayout
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -21,11 +22,18 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/colorPrimary"
                 android:minHeight="?attr/actionBarSize"
+                app:title="@string/select_an_item"
+                app:titleTextColor="@android:color/white"
                 app:popupTheme="@style/AppTheme" />
 
-            <FrameLayout
+            <TextView
+                android:id="@+id/main_text"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/select_an_item"
+                tools:text="Test"
+                android:textAppearance="@android:style/TextAppearance.Large" />
 
         </LinearLayout>
 

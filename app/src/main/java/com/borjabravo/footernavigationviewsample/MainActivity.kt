@@ -1,10 +1,12 @@
 package com.borjabravo.footernavigationviewsample
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import com.borjabravo.footernavigationview.FooterNavigationView
@@ -14,7 +16,6 @@ import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private var activityMainBinding: ActivityMainBinding? = null
-    private var optionSelected = R.id.menu_add
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +27,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         activityMainBinding?.toolbar?.setNavigationOnClickListener { activityMainBinding?.drawerLayout?.openDrawer(GravityCompat.START) }
 
         // Set up footer navigation view
-        activityMainBinding?.footerNavigationView?.setCheckedItem(optionSelected)
-        activityMainBinding?.footerNavigationView?.navigationView?.menu?.performIdentifierAction(optionSelected, 0)
         activityMainBinding?.footerNavigationView?.setNavigationListener(this)
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         activityMainBinding?.drawerLayout?.closeDrawers()
-        optionSelected = menuItem.itemId
+        updateViews(menuItem)
         return true
+    }
+
+    private fun updateViews(menuItem: MenuItem) {
+        activityMainBinding?.footerNavigationView?.setCheckedItem(menuItem.itemId)
+        activityMainBinding?.toolbar?.title = menuItem.title
+        activityMainBinding?.mainText?.text = menuItem.title
     }
 }
